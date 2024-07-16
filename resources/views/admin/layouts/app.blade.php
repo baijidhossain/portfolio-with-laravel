@@ -8,12 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
+
   <!-- App favicon -->
   <link rel="shortcut icon" href="https://baijid.dev.alpha.net.bd/imafusa/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
   <!-- Bootstrap Css -->
   <link href="{{ asset('assets/backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-  <!-- Icons Css -->
-  <link href="{{ asset('assets/backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
   <!-- App Css-->
   <link href="{{ asset('assets/backend/css/app.min.css') }} "  rel="stylesheet" type="text/css" />
 
@@ -209,6 +212,8 @@
 
   <!-- choices js -->
   <script src="{{ asset('assets/backend/libs/choices.js/public/assets/scripts/choices.min.js')}}"></script>
+
+
 
   <script src="{{ asset('assets/backend/js/app.js')}}"></script>
 
