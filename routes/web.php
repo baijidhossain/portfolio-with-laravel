@@ -1,23 +1,27 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
+use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('/admin/login', function () {
-  return view('admin.auth.login');
+Route::get('/dashboard', function () {
+  return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin/login', [AdminLoginController::class, 'index']);
-Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login');
 
-Route::get('/admin/home', [HomeController::class, 'index'])->name('admin.home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__ . '/auth.php';
+require __DIR__ . '/backend.php';
