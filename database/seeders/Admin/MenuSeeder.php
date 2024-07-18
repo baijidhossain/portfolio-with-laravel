@@ -16,154 +16,49 @@ class MenuSeeder extends Seeder
    */
   public function run()
   {
-
-    $backendsidebar = Menu::UpdateOrCreate([
-
+    $backend_sidebar = Menu::updateOrCreate([
       'name' => 'backend-sidebar',
       'description' => 'This is backend sidebar',
       'deletable' => false,
     ]);
 
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'divider',
-      'order' => 1,
-      'divider_title' => 'Control Panel',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
+    $backend_sidebar->menuItems()->updateOrCreate([
+      'menu_id' => $backend_sidebar->id,
       'type' => 'item',
       'order' => 2,
       'title' => 'Dashboard',
-      'url' => '/app/dashboard',
-      'icon_class' => 'metismenu-icon fas fa-tachometer-alt',
+      'url' => '/admin/dashboard',
+      'icon' => 'fa fa-dashboard',
     ]);
 
-
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'divider',
-      'order' => 3,
-      'divider_title' => 'Website Setup',
-
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
+    $blog = MenuItem::Create([
+      'menu_id' => $backend_sidebar->id,
       'type' => 'item',
-      'order' => 4,
-      'title' => 'Pages',
-      'url' => '/app/pages',
-      'icon_class' => 'metismenu-icon fas fa-file',
+      'parent_id' => 0,
+      'order' => 2,
+      'title' => 'Blogs',
+      'url' => 'javascript:void(0)',
+      'icon' => 'fa-solid fa-calendar-days',
     ]);
 
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
+    MenuItem::create([
+      'menu_id' => $backend_sidebar->id,
       'type' => 'item',
-      'order' => 5,
-      'title' => 'Layout',
-      'url' => '/app/layout',
-      'icon_class' => 'metismenu-icon fas fa-table',
+      'parent_id' => $blog->id,
+      'order' => 2,
+      'title' => 'Blog List',
+      'url' => '/admin/blog/',
+      'icon' => 'fa-solid fa-calendar-days',
     ]);
 
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
+    MenuItem::create([
+      'menu_id' => $backend_sidebar->id,
       'type' => 'item',
-      'order' => 6,
-      'title' => 'File Manager',
-      'url' => '/app/file',
-      'icon_class' => 'metismenu-icon fas fa-folder',
+      'parent_id' => $blog->id,
+      'order' => 2,
+      'title' => 'Blog Add',
+      'url' => '/admin/blog/add',
+      'icon' => 'fa-solid fa-calendar-days',
     ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 7,
-      'title' => 'Theme',
-      'url' => '/app/theme',
-      'icon_class' => 'metismenu-icon fas fa-code',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 8,
-      'title' => 'Content Types',
-      'url' => '/app/content_type',
-      'icon_class' => 'metismenu-icon fas fa-layer-group',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 9,
-      'title' => 'Dynamic Content',
-      'url' => '/app/dynamic_content',
-      'icon_class' => 'metismenu-icon fas fa-book ',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 10,
-      'title' => 'Social Media Link',
-      'url' => '/app/social',
-      'icon_class' => 'metismenu-icon fa fa-share-nodes',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 11,
-      'title' => 'Slider',
-      'url' => '/app/slider',
-      'icon_class' => 'metismenu-icon  fa-solid fa-sliders',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'divider',
-      'order' => 12,
-      'divider_title' => 'Administration',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 13,
-      'title' => 'Roles',
-      'url' => '/app/roles',
-      'icon_class' => 'metismenu-icon fas fa-project-diagram',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 14,
-      'title' => 'Users',
-      'url' => '/app/users',
-      'icon_class' => 'metismenu-icon fas fa-users',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 15,
-      'title' => 'Navigation',
-      'url' => '/app/menus',
-      'icon_class' => 'metismenu-icon fas fa-bars',
-    ]);
-
-    $backendsidebar->menuItems()->UpdateOrCreate([
-      'menu_id' => $backendsidebar->id,
-      'type' => 'item',
-      'order' => 16,
-      'title' => 'Settings',
-      'url' => '/app/settings/general',
-      'icon_class' => 'metismenu-icon fas fa-cog',
-    ]);
-
   }
 }
